@@ -16,3 +16,28 @@
 آزمون جدیدی اضافه می‌کنیم که در آن تراکنش‌ها بتوانند موجودی را منفی کنند. در حالت عادی این تست پاس نمی‌شود.
 
 ![1-fail](1-fail.png)
+
+
+سپس با تغییر کد به صورتی تغییر می‌دهیم که اجازه ندهد موجودی منفی شود و برای این تراکنش ها یک خطا چاپ کند.
+```java
+public static int calculateBalance(List<Transaction> transactions) {
+    int balance = 0;
+    for (Transaction t : transactions) {
+        if (t.getType() == TransactionType.DEPOSIT) {
+            balance += t.getAmount();
+        } else if (t.getType() == TransactionType.WITHDRAWAL) {
+            if (balance >= t.getAmount()) {
+                balance -= t.getAmount();
+            } else {
+                System.out.print("Transaction cannot be finished!");
+            }
+        }
+
+    }
+    return balance;
+}
+```
+
+و سپس مشاهده می‌شود که تست جدید ما پاس می‌شود و این خطا برطرف شده است.
+
+![1-pass](1-pass.png)

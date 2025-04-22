@@ -64,6 +64,18 @@ public class AccountBalanceCalculatorTest {
         List<Transaction> history = AccountBalanceCalculator.getTransactionHistory();
         assertTrue(history.isEmpty(), "Transaction history should be empty before calculating balance");
     }
+
+    @Test
+    void testNegativeBalanceByTransactions() {
+        int balance = AccountBalanceCalculator.calculateBalance(Arrays.asList(
+                new Transaction(TransactionType.DEPOSIT, 200),
+                new Transaction(TransactionType.WITHDRAWAL, 100),
+                new Transaction(TransactionType.WITHDRAWAL, 50),
+                new Transaction(TransactionType.WITHDRAWAL, 100)
+        ));
+        assertEquals(0, balance);
+    }
+
 //
 //    @Test
 //    void testTransactionHistoryAfterDeposits() {

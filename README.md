@@ -15,7 +15,7 @@
 
 آزمون جدیدی اضافه می‌کنیم که در آن تراکنش‌ها بتوانند موجودی را منفی کنند. در حالت عادی این تست پاس نمی‌شود.
 
-<img width="1512" alt="1-fail" src="https://github.com/user-attachments/assets/bee44c0b-a246-4cb6-8a8c-158690c31876" />
+    <img width="1512" alt="1-fail" src="https://github.com/user-attachments/assets/bee44c0b-a246-4cb6-8a8c-158690c31876" />
 
 
 سپس با تغییر کد به صورتی تغییر می‌دهیم که اجازه ندهد موجودی منفی شود و برای این تراکنش ها یک خطا چاپ کند.
@@ -55,3 +55,31 @@ public static int calculateBalance(List<Transaction> transactions) {
 ابتدا تست ها را از کامنت در می‌آوریم و مشاهده می‌کنیم که پاس نمی‌شوند:
 
 ![2-fail.png](2-fail.png)
+
+
+برای پاس شدن باید تابع را به گونه ای تغییر دهیم که لیست تراکنش‌ها را بر اساس آخرین محاسبه برگرداند.
+
+```java
+public static int calculateBalance(List<Transaction> transactions) {
+    int balance = 0;
+    clearTransactionHistory();
+    for (Transaction t : transactions) {
+        if (t.getType() == TransactionType.DEPOSIT) {
+            balance += t.getAmount();
+            addTransaction(t);
+        } else if (t.getType() == TransactionType.WITHDRAWAL) {
+            if (balance >= t.getAmount()) {
+                balance -= t.getAmount();
+                addTransaction(t);
+            } else {
+                System.out.print("Transaction cannot be finished!");
+            }
+        }
+    }
+    return balance;
+}
+```
+
+با این تغییرات سابقه تراکنش های انجام شده را داریم. تست ها را اجرا می‌کنیم و مشاهده می‌شود تست ها پاس می‌شوند.
+
+![2-pass.png](2-pass.png)

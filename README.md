@@ -15,7 +15,7 @@
 
 آزمون جدیدی اضافه می‌کنیم که در آن تراکنش‌ها بتوانند موجودی را منفی کنند. در حالت عادی این تست پاس نمی‌شود.
 
-    <img width="1512" alt="1-fail" src="https://github.com/user-attachments/assets/bee44c0b-a246-4cb6-8a8c-158690c31876" />
+![1-fail](1-fail.png)
 
 
 سپس با تغییر کد به صورتی تغییر می‌دهیم که اجازه ندهد موجودی منفی شود و برای این تراکنش ها یک خطا چاپ کند.
@@ -40,7 +40,7 @@ public static int calculateBalance(List<Transaction> transactions) {
 
 و سپس مشاهده می‌شود که تست جدید ما پاس می‌شود و این خطا برطرف شده است.
 
-<img width="1512" alt="1-pass" src="https://github.com/user-attachments/assets/2d45d890-4fa0-4354-bdc1-2d1416e911aa" />
+![1-pass](1-pass.png)
 
 ## پرسش سوم
 به‌نظر شما و بر اساس تجربه‌ی به‌دست آمده، نوشتن آزمون پس از نوشتن برنامه، چه مشکلاتی را می‌تواند بسازد؟
